@@ -15,3 +15,14 @@
   <!-- <img src="<%= picture.url %>" alt="<%= picture.title %>"> -->
   <%= link_to(image_tag(picture.url, class: 'index-img'), "/pictures/#{picture.id}") %>
 <% end %>
+
+<hr>
+
+<h1>Pictures older than a month</h1>
+<% @older_one_month.each do |picture| %>
+  <p>
+    <strong><%= picture.title %>, <%= picture.artist %></strong><br>
+    Created on: <%= picture.created_at %><br>
+    <%= image_tag(picture.url, class: 'index-img') %>
+  </p>
+<% end %>
