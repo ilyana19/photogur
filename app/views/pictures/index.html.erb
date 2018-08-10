@@ -26,3 +26,25 @@
     <%= image_tag(picture.url, class: 'index-img') %>
   </p>
 <% end %>
+
+<hr>
+
+<h1>Pictures created in 2017</h1>
+<% @pics_in_2017.each do |picture| %>
+  <p>
+    <strong><%= picture.title %>, <%= picture.artist %></strong><br>
+    Created on: <%= picture.created_at %><br>
+    <%= image_tag(picture.url, class: 'index-img') %>
+  </p>
+<% end %>
+
+<hr>
+
+<h1>Pictures created in 2016</h1>
+<% @pics_in_2016.each do |picture| %>
+  <p>
+    <strong><%= picture.title %>, <%= picture.artist %></strong><br>
+    Created on: <%= picture.created_at %><br>
+    <%= image_tag(picture.url, class: 'index-img') %>
+  </p>
+<% end %>
