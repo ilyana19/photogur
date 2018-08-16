@@ -7,8 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <h1>Welcome</h1>
 
-<%= yield %>
+  <p><%= link_to 'Sign Up', new_users_path %></p>
+
+  <%= yield %>
 
 </body>
 </html>
