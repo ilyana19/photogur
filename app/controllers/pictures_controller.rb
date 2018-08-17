@@ -1,5 +1,7 @@
 class PicturesController < ApplicationController
   before_action :ensure_logged_in, except: [:show, :index]
+  before_action :load_picture, only: [:show, :edit, :update, :destory]
+  # before_action :ensure_user_owns_picture, only: [:edit]
 
   def index
     @pictures = Picture.all
@@ -10,7 +12,7 @@ class PicturesController < ApplicationController
   end
 
   def show
-    @picture = Picture.find(params[:id])
+    # @picture = Picture.find(params[:id])
   end
 
   def new
@@ -37,11 +39,11 @@ class PicturesController < ApplicationController
   end
 
   def edit
-    @picture = Picture.find(params[:id])
+    # @picture = Picture.find(params[:id])
   end
 
   def update
-    @picture = Picture.find(params[:id])
+    # @picture = Picture.find(params[:id])
 
     @picture.title = params[:picture][:title]
     @picture.artist = params[:picture][:artist]
@@ -56,8 +58,18 @@ class PicturesController < ApplicationController
   end
 
   def destroy
-    @picture = Picture.find(params[:id])
+    # @picture = Picture.find(params[:id])
     @picture.destroy
     redirect_to "/pictures"
+  end
+
+  private
+
+  def ensure_user_owns_picture
+
+  end
+
+  def load_picture
+    @picture = Picture.find(params[:id])
   end
 end
