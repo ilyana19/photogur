@@ -1,7 +1,7 @@
 class PicturesController < ApplicationController
   before_action :ensure_logged_in, except: [:show, :index]
   before_action :load_picture, only: [:show, :edit, :update, :destory]
-  # before_action :ensure_user_owns_picture, only: [:edit]
+  before_action :ensure_user_owns_picture, only: [:edit]
 
   def index
     @pictures = Picture.all
@@ -66,7 +66,10 @@ class PicturesController < ApplicationController
   private
 
   def ensure_user_owns_picture
-
+    unless current_user == @picture.user
+      flash[:alert] = "Access Denied. Please Log In"
+      redirect_to new_sessions_url
+    end
   end
 
   def load_picture
